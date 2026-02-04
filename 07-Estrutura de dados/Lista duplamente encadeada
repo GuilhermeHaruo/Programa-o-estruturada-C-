@@ -1,0 +1,145 @@
+#include <iostream>
+
+using namespace std;
+
+
+
+// Definição do nó
+
+struct Nodo {
+
+    int dado;
+
+    Nodo* proximo;
+
+    Nodo* anterior;
+
+
+
+    Nodo(int valor) {
+
+        dado = valor;
+
+        proximo = nullptr;
+
+        anterior = nullptr;
+
+    }
+
+};
+
+
+
+// Definição da lista duplamente encadeada
+
+struct ListaDuplamenteEncadeada {
+
+    Nodo* cabeca;
+
+    Nodo* cauda;
+
+
+
+    ListaDuplamenteEncadeada() {
+
+        cabeca = nullptr;
+
+        cauda = nullptr;
+
+    }
+
+
+
+    // Função para adicionar um novo nó no final da lista
+
+    void adicionar(int valor) {
+
+        Nodo* novoNodo = new Nodo(valor);
+
+        if (!cabeca) {
+
+            cabeca = cauda = novoNodo;
+
+        } else {
+
+            cauda->proximo = novoNodo;
+
+            novoNodo->anterior = cauda;
+
+            cauda = novoNodo;
+
+        }
+
+    }
+
+
+
+    // Função para exibir os elementos da lista
+
+    void exibir() {
+
+        Nodo* temp = cabeca;
+
+        cout << "Lista Duplamente Encadeada: ";
+
+        while (temp) {
+
+            cout << temp->dado << " ";
+
+            temp = temp->proximo;
+
+        }
+
+        cout << endl;
+
+    }
+
+
+
+    // Função para exibir a lista de trás para frente
+
+    void exibirReverso() {
+
+        Nodo* temp = cauda;
+
+        cout << "Lista (em ordem reversa): ";
+
+        while (temp) {
+
+            cout << temp->dado << " ";
+
+            temp = temp->anterior;
+
+        }
+
+        cout << endl;
+
+    }
+
+};
+
+
+
+int main() {
+
+    ListaDuplamenteEncadeada lista;
+
+
+
+    lista.adicionar(10);
+
+    lista.adicionar(20);
+
+    lista.adicionar(30);
+
+
+
+    lista.exibir();         // Exibe a lista na ordem normal
+
+    lista.exibirReverso();  // Exibe a lista na ordem reversa
+
+
+
+    return 0;
+
+}
