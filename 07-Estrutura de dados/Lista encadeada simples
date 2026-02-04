@@ -1,0 +1,117 @@
+#include <iostream>
+
+using namespace std;
+
+
+
+// Definição do nó
+
+struct Nodo {
+
+    int dado;
+
+    Nodo* proximo;
+
+
+
+    Nodo(int valor) {
+
+        dado = valor;
+
+        proximo = nullptr;
+
+    }
+
+};
+
+
+
+// Definição da lista encadeada simples
+
+struct ListaEncadeada {
+
+    Nodo* cabeca;
+
+
+
+    ListaEncadeada() {
+
+        cabeca = nullptr;  // Inicializa a lista vazia
+
+    }
+
+
+
+    // Função para adicionar um novo nó no final da lista
+
+    void adicionar(int valor) {
+
+        Nodo* novoNodo = new Nodo(valor);
+
+        if (!cabeca) {
+
+            cabeca = novoNodo;
+
+        } else {
+
+            Nodo* temp = cabeca;
+
+            while (temp->proximo) {
+
+                temp = temp->proximo;
+
+            }
+
+            temp->proximo = novoNodo;
+
+        }
+
+    }
+
+
+
+    // Função para exibir os elementos da lista
+
+    void exibir() {
+
+        Nodo* temp = cabeca;
+
+        cout << "Lista Encadeada Simples: ";
+
+        while (temp) {
+
+            cout << temp->dado << " ";
+
+            temp = temp->proximo;
+
+        }
+
+        cout << endl;
+
+    }
+
+};
+
+
+
+int main() {
+
+    ListaEncadeada lista;
+
+
+
+    lista.adicionar(10);
+
+    lista.adicionar(20);
+
+    lista.adicionar(30);
+
+
+
+    lista.exibir();
+
+
+
+    return 0;
+
+}
